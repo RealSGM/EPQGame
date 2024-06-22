@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://GUI/Buttons/QuitToMM/QuitToMMButton3.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/UI/PauseMenu.gd" type="Script" id=2]
+[ext_resource path="res://GUI/Buttons/SaveGame/SaveGameButton2.png" type="Texture" id=3]
+[ext_resource path="res://GUI/Buttons/SaveGame/SaveGameButton1.png" type="Texture" id=4]
+[ext_resource path="res://GUI/Buttons/QuitToMM/QuitToMMButton1.png" type="Texture" id=8]
+[ext_resource path="res://GUI/Buttons/SaveGame/SaveGameButton3.png" type="Texture" id=9]
+[ext_resource path="res://GUI/Buttons/QuitToMM/QuitToMMButton2.png" type="Texture" id=10]
+[ext_resource path="res://GUI/Panels/pausemenupanel.png" type="Texture" id=11]
+
+[node name="PauseMenu" type="Control"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 320.0
+margin_bottom = 176.0
+color = Color( 0, 0, 0, 0.4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CC" type="CenterContainer" parent="."]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 321.0
+margin_bottom = 177.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CC" type="CenterContainer" parent="CC"]
+margin_left = 116.0
+margin_top = 57.0
+margin_right = 204.0
+margin_bottom = 118.0
+
+[node name="Panel" type="TextureRect" parent="CC/CC"]
+margin_right = 88.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 88, 61 )
+texture = ExtResource( 11 )
+
+[node name="VB" type="VBoxContainer" parent="CC/CC/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -23.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QOTMMButton" type="TextureButton" parent="CC/CC/Panel/VB"]
+margin_right = 80.0
+margin_bottom = 15.0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 1 )
+
+[node name="SGButton" type="TextureButton" parent="CC/CC/Panel/VB"]
+margin_top = 19.0
+margin_right = 80.0
+margin_bottom = 34.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 9 )
+[connection signal="pressed" from="CC/CC/Panel/VB/QOTMMButton" to="." method="_on_QOTMMButton_pressed"]
+[connection signal="pressed" from="CC/CC/Panel/VB/SGButton" to="." method="_on_SGButton_pressed"]

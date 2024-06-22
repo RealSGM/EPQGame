@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Enemies/NatureBoss/NatureSpell.gd" type="Script" id=2]
+[ext_resource path="res://Assets/SFX/Impact.wav" type="AudioStream" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 7.98103
+
+[sub_resource type="Animation" id=2]
+resource_name = "Start"
+length = 3.5
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "_on_load_finish"
+}, {
+"args": [  ],
+"method": "_charge_finished"
+} ]
+}
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.00364964, 0.0912409, 0.99635, 1 )
+colors = PoolColorArray( 0.248284, 0.803711, 0.0533714, 1, 0.220435, 0.745117, 0.0989609, 1, 0.243579, 0.730008, 0.113406, 1, 0.0440445, 0.245117, 0.104916, 1, 0.0927734, 0.3125, 0.215941, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[sub_resource type="Curve" id=5]
+_data = [ Vector2( 0.026936, 0.651136 ), 0.0, 0.675, 0, 0, Vector2( 0.976431, 0.769318 ), -0.45, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+emission_shape = 1
+emission_sphere_radius = 5.0
+flag_disable_z = true
+direction = Vector3( 1, 1, 1 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 100.0
+orbit_velocity = 20.0
+orbit_velocity_random = 0.46
+linear_accel = 2.0
+linear_accel_random = 0.24
+scale = 2.5
+scale_random = 0.41
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 4 )
+
+[node name="NatureSpell" type="Area2D"]
+scale = Vector2( 0.6, 0.6 )
+z_index = 2
+collision_layer = 256
+collision_mask = 4
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="ArrowHit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = -10.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Start = SubResource( 2 )
+
+[node name="OrbitalParticles" type="Particles2D" parent="."]
+amount = 100
+speed_scale = 0.6
+explosiveness = 0.5
+randomness = 0.5
+process_material = SubResource( 7 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 8.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hi-hill.wav-685193544f9af7b801c6a46415e77857.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/hi-hill.wav"
+dest_files=[ "res://.import/hi-hill.wav-685193544f9af7b801c6a46415e77857.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

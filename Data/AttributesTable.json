@@ -1,0 +1,57 @@
+{
+    "11000": {
+      "AttributeName": "Vampire",
+      "AttributeRarity": "Cursed",
+      "Attribute Description": "Life-Steal"
+    },
+    "11001": {
+      "AttributeName": "Triple Shot",
+      "AttributeRarity": "Epic",
+      "Attribute Description": "Shoots 3 arrows"
+    },
+    "11002": {
+      "AttributeName": "Homing Arrows",
+      "AttributeRarity": "Epic",
+      "Attribute Description": "Shoots towards enemies ( or mouse pointer continuously)"
+    },
+    "11003": {
+      "AttributeName": "Bigger Stomach",
+      "AttributeRarity": "Reasonable",
+      "Attribute Description": "Faster Digestion"
+    },
+    "11004": {
+      "AttributeName": "Shades",
+      "AttributeRarity": "Peasant",
+      "Attribute Description": "Coolness: +10"
+    },
+    "11005": {
+      "AttributeName": "Ice Skates",
+      "AttributeRarity": "Rare",
+      "Attribute Description": "Reduces friction"
+    },
+    "11006": {
+      "AttributeName": "Wizardary",
+      "AttributeRarity": "Reasonable",
+      "Attribute Description": "Faster Mana Regeneration"
+    },
+    "11007": {
+      "AttributeName": "Healer",
+      "AttributeRarity": "Rare",
+      "Attribute Description": "Faster Health Regeneration"
+    },
+    "11008": {
+      "AttributeName": "Quick Attack",
+      "AttributeRarity": "Epic",
+      "Attribute Description": "Faster Attacking"
+    },
+    "11009": {
+      "AttributeName": "Poisonous",
+      "AttributeRarity": "Rare",
+      "Attribute Description": "Attacks deal poison damage"
+    },
+    "11010": {
+      "AttributeName": "Mr Freeze",
+      "AttributeRarity": "Rare",
+      "Attribute Description": "Attacks have a chance to freeze enemy"
+    }
+}

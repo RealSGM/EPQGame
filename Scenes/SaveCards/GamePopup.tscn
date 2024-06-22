@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://GUI/Panels/gamecardpopup.png" type="Texture" id=2]
+
+[node name="GamePanel0" type="TextureRect"]
+pause_mode = 2
+margin_right = 71.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 64, 64 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

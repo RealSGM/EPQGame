@@ -1,0 +1,48 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Assets/Map/Rock/PixelPackTOPDOWN8BIT-2.png.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Rock.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Player/Hurtbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Effects/RockEffect.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/ItemDrop.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Map/Rock/rockh2.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Map/Rock/rockh1.png" type="Texture" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 6.27692, 6.0908 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8.00635, 8.01353 )
+
+[node name="Rock" type="StaticBody2D"]
+position = Vector2( -8, -10 )
+collision_layer = 65
+collision_mask = 2147483922
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+RockEffect = ExtResource( 4 )
+itemDrop = ExtResource( 5 )
+rockh1 = ExtResource( 7 )
+rockh2 = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 8.61919, 9.03963 )
+shape = SubResource( 1 )
+
+[node name="Hurtbox" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2( 8.40895, 9.03964 )
+scale = Vector2( 0.770922, 0.773772 )
+shape = SubResource( 2 )
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+
+[editable path="Hurtbox"]

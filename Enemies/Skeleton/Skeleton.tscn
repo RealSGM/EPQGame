@@ -1,0 +1,192 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://Enemies/Skeleton/SkeletonDamageStatesControllerSkelly.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/Skeleton/SkeletonScript.gd" type="Script" id=2]
+[ext_resource path="res://Enemies/Player Detection/PlayerDetectionZone.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Player/HitBox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemies/Stats.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Player/Hurtbox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Enemies/Skeleton/SkeletonHitBox.gd" type="Script" id=7]
+[ext_resource path="res://Enemies/Skeleton/WanderSkeleton.gd" type="Script" id=8]
+[ext_resource path="res://Enemies/Skeleton/SkeletonStats.gd" type="Script" id=9]
+[ext_resource path="res://Assets/EnemyMove/SmallSkeleton.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Attacks/DamageEffects.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Character/Weapons/BowBone.png" type="Texture" id=12]
+[ext_resource path="res://Enemies/DamageStatesController.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Enemies/Skeleton/SkeletonDeathEffect.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Enemies/Skeleton/SkeletonArrow.tscn" type="PackedScene" id=15]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Start"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 100, 100, 100, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 6.15747, 6.33196 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 10 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 10 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 10 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 10 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 10 )
+region = Rect2( 80, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 10 )
+region = Rect2( 96, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 10 )
+region = Rect2( 112, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=11]
+resource_local_to_scene = true
+animations = [ {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 4.21623, 3.90133 )
+
+[sub_resource type="CircleShape2D" id=13]
+radius = 46.5633
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 5.05504, 5.73623 )
+
+[node name="Skeleton" type="KinematicBody2D"]
+pause_mode = 1
+collision_layer = 16400
+collision_mask = 19
+script = ExtResource( 2 )
+EnemyDeathEffect = ExtResource( 14 )
+arrowScene = ExtResource( 15 )
+
+[node name="BowSprite" type="Sprite" parent="."]
+position = Vector2( 1.00153, -2.76657 )
+scale = Vector2( 0.7, 0.7 )
+z_index = 2
+texture = ExtResource( 12 )
+offset = Vector2( 4, -4 )
+hframes = 9
+
+[node name="BowTimer" type="Timer" parent="."]
+wait_time = 0.8
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Start = SubResource( 1 )
+
+[node name="Hurtbox" parent="." instance=ExtResource( 6 )]
+position = Vector2( 0.632998, -5.52191 )
+collision_layer = 24
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+visible = false
+shape = SubResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0.386043, -6.84749 )
+frames = SubResource( 11 )
+frame = 4
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0.0516316, -5.21602 )
+shape = SubResource( 12 )
+
+[node name="Stats" parent="." instance=ExtResource( 5 )]
+script = ExtResource( 9 )
+
+[node name="PlayerDetectionZone" parent="." instance=ExtResource( 3 )]
+
+[node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
+visible = false
+modulate = Color( 1, 0, 0, 0.364706 )
+self_modulate = Color( 1, 0, 0, 0.643137 )
+position = Vector2( 0.657005, 1.0191 )
+shape = SubResource( 13 )
+
+[node name="HitBox" parent="." instance=ExtResource( 4 )]
+position = Vector2( -0.0662174, -7.74733 )
+collision_mask = 4
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+visible = false
+position = Vector2( 0.473331, 1.84883 )
+shape = SubResource( 14 )
+
+[node name="DamageStates" type="Sprite" parent="."]
+position = Vector2( 0.383642, -15.0159 )
+scale = Vector2( 0.231088, 0.227161 )
+texture = ExtResource( 11 )
+hframes = 6
+frame = 3
+
+[node name="DamageStatesController" type="Node2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="DurationState" type="Timer" parent="DamageStatesController"]
+wait_time = 10.0
+one_shot = true
+
+[node name="TimerDamageStates" type="Timer" parent="DamageStatesController"]
+wait_time = 0.5
+
+[node name="WandereController" type="Node2D" parent="."]
+position = Vector2( 0.0172119, 0.250282 )
+script = ExtResource( 8 )
+
+[node name="Timer" type="Timer" parent="WandereController"]
+one_shot = true
+autostart = true
+
+[node name="DamageStatesController2" parent="." instance=ExtResource( 13 )]
+script = ExtResource( 1 )
+
+[connection signal="timeout" from="BowTimer" to="." method="_on_BowTimer_timeout"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+[connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
+[connection signal="DamageTaken" from="DamageStatesController" to="." method="_on_DamageStatesController_DamageTaken"]
+[connection signal="DurationStop" from="DamageStatesController" to="." method="_on_DamageStatesController_DurationStop"]
+[connection signal="timeout" from="DamageStatesController/DurationState" to="DamageStatesController" method="_on_DurationState_timeout"]
+[connection signal="timeout" from="DamageStatesController/TimerDamageStates" to="DamageStatesController" method="_on_TimerDamageStates_timeout"]
+[connection signal="timeout" from="WandereController/Timer" to="WandereController" method="_on_Timer_timeout"]
+
+[editable path="Hurtbox"]
+[editable path="PlayerDetectionZone"]
+[editable path="HitBox"]

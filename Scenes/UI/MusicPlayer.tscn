@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scripts/MusicPlayer.gd" type="Script" id=1]
+[ext_resource path="res://Assets/SFX/LobbyMusic.wav" type="AudioStream" id=2]
+[ext_resource path="res://Assets/SFX/GameMusic.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/SFX/MainMenuMusic.wav" type="AudioStream" id=4]
+[ext_resource path="res://Assets/SFX/GameOver.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/SFX/Impact.wav" type="AudioStream" id=6]
+[ext_resource path="res://Assets/SFX/EnemyHit.wav" type="AudioStream" id=7]
+[ext_resource path="res://Assets/SFX/hi-hill.wav" type="AudioStream" id=8]
+[ext_resource path="res://Assets/SFX/RockBreak.wav" type="AudioStream" id=9]
+[ext_resource path="res://Assets/SFX/RockHit.wav" type="AudioStream" id=10]
+
+[node name="MusicNCounter" type="Node"]
+script = ExtResource( 1 )
+
+[node name="MainMenuMusic" type="AudioStreamPlayer" parent="." groups=[
+"sfx",
+]]
+stream = ExtResource( 4 )
+
+[node name="LobbyMusic" type="AudioStreamPlayer" parent="." groups=[
+"sfx",
+]]
+stream = ExtResource( 2 )
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="." groups=[
+"sfx",
+]]
+stream = ExtResource( 3 )
+
+[node name="BossMusic" type="AudioStreamPlayer" parent="." groups=[
+"sfx",
+]]
+stream = ExtResource( 3 )
+volume_db = -20.0
+
+[node name="GameOver" type="AudioStreamPlayer" parent="." groups=[
+"sfx",
+]]
+stream = ExtResource( 5 )
+
+[node name="MeleeHit" type="AudioStreamPlayer" parent="." groups=[
+"sfx",
+]]
+stream = ExtResource( 7 )
+
+[node name="RangedHit" type="AudioStreamPlayer" parent="." groups=[
+"sfx",
+]]
+stream = ExtResource( 6 )
+
+[node name="Footstep" type="AudioStreamPlayer" parent="." groups=[
+"sfx",
+]]
+stream = ExtResource( 8 )
+
+[node name="RockBreak" type="AudioStreamPlayer" parent="." groups=[
+"sfx",
+]]
+stream = ExtResource( 9 )
+volume_db = -18.0
+pitch_scale = 1.1
+
+[node name="RockHit" type="AudioStreamPlayer" parent="." groups=[
+"sfx",
+]]
+stream = ExtResource( 10 )
+volume_db = -10.0

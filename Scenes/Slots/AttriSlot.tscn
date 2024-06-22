@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://GUI/AttributeIcons/testButton1.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Slots/AttriSlot.gd" type="Script" id=2]
+[ext_resource path="res://GUI/AttributeIcons/testButton3.png" type="Texture" id=3]
+[ext_resource path="res://GUI/AttributeIcons/testButton2.png" type="Texture" id=4]
+
+[node name="TextureButton" type="TextureButton"]
+margin_right = 16.0
+margin_bottom = 16.0
+toggle_mode = true
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 3 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.215686, 0.215686, 0.215686, 0.901961 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="toggled" from="." to="." method="_on_TextureButton_toggled"]

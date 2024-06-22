@@ -1,0 +1,103 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Assets/TileSet/0x72_DungeonTilesetII_v1.3.png" type="Texture" id=1]
+[ext_resource path="res://Assets/TileSet/Dungeon tileset.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Map/Walls.gd" type="Script" id=3]
+
+[sub_resource type="OccluderPolygon2D" id=1]
+polygon = PoolVector2Array( 15.9701, -95.9971, 62.8713, -95.6095, 63.4527, -80.1049, 16.1639, -80.1049 )
+
+[sub_resource type="OccluderPolygon2D" id=2]
+polygon = PoolVector2Array( 11.4032, -0.070755, 15.9622, -0.100296, 15.8895, 15.7246, 11.5901, 15.7246 )
+
+[sub_resource type="OccluderPolygon2D" id=3]
+polygon = PoolVector2Array( -0.362354, -0.0621643, 16.2534, 0.00273895, 16.3832, 1.04123, -0.297447, 1.10613 )
+
+[sub_resource type="OccluderPolygon2D" id=4]
+polygon = PoolVector2Array( 0.0270767, -0.165192, 4.89499, -0.100296, 4.83008, 15.8665, -0.0378265, 15.8015 )
+
+[sub_resource type="OccluderPolygon2D" id=5]
+polygon = PoolVector2Array( -0.395615, 0.132553, 16.2851, 0.132553, 16.2202, 0.976318, -0.395615, 1.04123 )
+
+[sub_resource type="OccluderPolygon2D" id=6]
+polygon = PoolVector2Array( 4.43283, 15.9854, 0.260609, 15.9854, 0.126019, -0.299728, 15.7382, -0.0305481, 15.6036, 3.06497, 4.56742, 3.19955 )
+
+[sub_resource type="OccluderPolygon2D" id=7]
+polygon = PoolVector2Array( -0.623596, 0.00273895, 16.5763, -0.0621643, 16.4465, 1.04123, -0.688499, 0.976318 )
+
+[sub_resource type="OccluderPolygon2D" id=8]
+polygon = PoolVector2Array( 15.6196, 15.5816, 15.6196, 15.3125, 11.582, 15.5816, 11.582, 3.33415, 0.141987, 3.33415, -0.127193, -0.0305481, 15.7542, -0.299728, 15.7542, -0.299728 )
+
+[sub_resource type="OccluderPolygon2D" id=9]
+polygon = PoolVector2Array( 15.5383, 15.6545, 15.6318, 0.0460815, 11.4259, 0.0460815, 11.7998, 12.0094, 0.116821, 11.916, -0.0701141, 15.748 )
+
+[sub_resource type="OccluderPolygon2D" id=10]
+polygon = PoolVector2Array( 0.454048, 12.0571, 0.454048, 12.0571, 15.6356, 12.0571, 15.7971, 15.6102, 0.615547, 15.9332 )
+
+[sub_resource type="OccluderPolygon2D" id=11]
+polygon = PoolVector2Array( -0.0877991, -0.0473938, 4.67886, 0.0460815, 4.95926, 12.0094, 15.7076, 12.4768, 15.8945, 15.5611, 0.192596, 15.9349 )
+
+[sub_resource type="OccluderPolygon2D" id=12]
+polygon = PoolVector2Array( 0.0701447, 11.8163, 15.8422, 11.9462, 15.9071, 15.8405, 0.00524139, 15.9054 )
+
+[sub_resource type="OccluderPolygon2D" id=13]
+polygon = PoolVector2Array( -62.9749, 12.4291, -63.3625, 12.623, -33.1287, 12.8168, -32.5473, 32.0036, -63.7502, 32.3912 )
+
+[sub_resource type="TileSet" id=14]
+0/name = "Dungeon tileset.png 0"
+0/texture = ExtResource( 2 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 384, 192 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 16, 16 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "0x72_DungeonTilesetII_v1.3.png 1"
+1/texture = ExtResource( 1 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 112, 256 )
+1/tile_mode = 2
+1/autotile/icon_coordinate = Vector2( 0, 0 )
+1/autotile/tile_size = Vector2( 16, 16 )
+1/autotile/spacing = 0
+1/autotile/occluder_map = [ Vector2( 0, 7 ), SubResource( 1 ), Vector2( 0, 8 ), SubResource( 2 ), Vector2( 1, 1 ), SubResource( 3 ), Vector2( 1, 8 ), SubResource( 4 ), Vector2( 2, 1 ), SubResource( 5 ), Vector2( 2, 8 ), SubResource( 6 ), Vector2( 3, 1 ), SubResource( 7 ), Vector2( 3, 8 ), SubResource( 8 ), Vector2( 4, 8 ), SubResource( 9 ), Vector2( 4, 10 ), SubResource( 10 ), Vector2( 5, 8 ), SubResource( 11 ), Vector2( 5, 10 ), SubResource( 12 ), Vector2( 6, 7 ), SubResource( 13 ) ]
+1/autotile/navpoly_map = [  ]
+1/autotile/priority_map = [  ]
+1/autotile/z_index_map = [  ]
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[sub_resource type="OccluderPolygon2D" id=15]
+polygon = PoolVector2Array( 0.412205, -0.203537, 4.82193, -0.361027, 5.13689, 172.091, 315.55, 172.248, 315.865, -0.0460548, 319.96, 0.111435, 319.802, 176.5, -0.0602646, 175.87 )
+
+[node name="Walls" type="TileMap"]
+tile_set = SubResource( 14 )
+cell_size = Vector2( 16, 16 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 0, 1, 524290, 1, 1, 65538, 2, 1, 65538, 3, 1, 65538, 4, 1, 65538, 5, 1, 65538, 6, 1, 65538, 7, 1, 65538, 8, 1, 65538, 9, 1, 65538, 10, 1, 65538, 11, 1, 65538, 12, 1, 65538, 13, 1, 65538, 14, 1, 65538, 15, 1, 65538, 16, 1, 65538, 17, 1, 65538, 18, 1, 65538, 19, 1, 524291, 65536, 1, 524289, 65555, 1, 524288, 131072, 1, 524289, 131091, 1, 524288, 196608, 1, 524289, 196627, 1, 524288, 262144, 1, 524289, 262163, 1, 524288, 327680, 1, 524289, 327699, 1, 524288, 393216, 1, 524289, 393235, 1, 524288, 458752, 1, 524289, 458771, 1, 524288, 524288, 1, 524289, 524307, 1, 524288, 589824, 1, 524289, 589843, 1, 524288, 655360, 1, 524293, 655361, 1, 458755, 655362, 1, 458755, 655363, 1, 458755, 655364, 1, 458755, 655365, 1, 458755, 655366, 1, 458755, 655367, 1, 458755, 655368, 1, 458755, 655369, 1, 458755, 655370, 1, 458755, 655371, 1, 458755, 655372, 1, 458755, 655373, 1, 458755, 655374, 1, 458755, 655375, 1, 458755, 655376, 1, 458755, 655377, 1, 458754, 655378, 1, 458754, 655379, 1, 524292 )
+script = ExtResource( 3 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource( 15 )

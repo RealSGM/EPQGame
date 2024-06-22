@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://ParticleIceExplosion.gd" type="Script" id=1]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.333333, 0.51938, 0.596899, 0.744186, 0.813953 )
+colors = PoolColorArray( 0, 0.117117, 1, 1, 0.147296, 0.799717, 0.942697, 1, 0.38526, 0.85561, 0.958688, 1, 0.429128, 0.568041, 0.923165, 1, 0.703125, 1, 0.962912, 1, 0.00763948, 0.977853, 0.924863, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+width = 2049
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.130682 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+emission_shape = 1
+emission_sphere_radius = 2.0
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 46.52
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 45.35
+scale_random = 1.0
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 2 )
+
+[node name="ParticleIceExplosion" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+emitting = false
+amount = 100
+lifetime = 0.3
+preprocess = 600.0
+explosiveness = 0.69
+randomness = 0.37
+process_material = SubResource( 5 )
+
+[connection signal="hide" from="Particles2D" to="." method="_on_Particles2D_hide"]

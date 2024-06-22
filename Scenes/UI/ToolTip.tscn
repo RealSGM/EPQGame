@@ -1,0 +1,181 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://GUI/Panels/tooltipclose.png" type="Texture" id=1]
+[ext_resource path="res://GUI/Panels/tooltip.png" type="Texture" id=2]
+[ext_resource path="res://Fonts/SmallerFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Scripts/UI/ToolTip.gd" type="Script" id=4]
+
+[node name="ToolTip" type="Popup"]
+margin_right = 88.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 88, 88 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="P" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 88, 88 )
+mouse_filter = 2
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MC" type="MarginContainer" parent="P"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBC" type="VBoxContainer" parent="P/MC"]
+margin_right = 84.0
+margin_bottom = 84.0
+mouse_filter = 2
+
+[node name="VBoxContainer" type="HBoxContainer" parent="P/MC/VBC"]
+margin_right = 148.0
+margin_bottom = 6.0
+
+[node name="TextureButton" type="TextureButton" parent="P/MC/VBC/VBoxContainer"]
+margin_right = 84.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 4, 4 )
+texture_normal = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemName" type="Label" parent="P/MC/VBC/VBoxContainer/TextureButton"]
+margin_left = 8.0
+margin_right = 76.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 68, 0 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "<ItemName>"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stat1" type="HBoxContainer" parent="P/MC/VBC"]
+margin_top = 10.0
+margin_right = 148.0
+margin_bottom = 17.0
+mouse_filter = 2
+
+[node name="Blank" type="Label" parent="P/MC/VBC/Stat1"]
+margin_right = 1.0
+margin_bottom = 7.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+autowrap = true
+
+[node name="Stat" type="Label" parent="P/MC/VBC/Stat1"]
+margin_left = 5.0
+margin_right = 77.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 72, 7 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+autowrap = true
+
+[node name="Stat2" type="HBoxContainer" parent="P/MC/VBC"]
+margin_top = 21.0
+margin_right = 148.0
+margin_bottom = 28.0
+mouse_filter = 2
+
+[node name="Blank2" type="Label" parent="P/MC/VBC/Stat2"]
+margin_right = 1.0
+margin_bottom = 7.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+autowrap = true
+
+[node name="Stat" type="Label" parent="P/MC/VBC/Stat2"]
+margin_left = 5.0
+margin_right = 77.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 72, 7 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+autowrap = true
+
+[node name="Stat3" type="HBoxContainer" parent="P/MC/VBC"]
+margin_top = 32.0
+margin_right = 148.0
+margin_bottom = 39.0
+mouse_filter = 2
+
+[node name="Blank3" type="Label" parent="P/MC/VBC/Stat3"]
+margin_right = 1.0
+margin_bottom = 7.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+autowrap = true
+
+[node name="Stat" type="Label" parent="P/MC/VBC/Stat3"]
+margin_left = 5.0
+margin_right = 77.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 72, 7 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+autowrap = true
+
+[node name="Stat4" type="HBoxContainer" parent="P/MC/VBC"]
+margin_top = 43.0
+margin_right = 148.0
+margin_bottom = 50.0
+mouse_filter = 2
+
+[node name="Blank4" type="Label" parent="P/MC/VBC/Stat4"]
+margin_right = 1.0
+margin_bottom = 7.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+autowrap = true
+
+[node name="Stat" type="Label" parent="P/MC/VBC/Stat4"]
+margin_left = 5.0
+margin_right = 77.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 72, 7 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+autowrap = true
+
+[node name="Stat5" type="HBoxContainer" parent="P/MC/VBC"]
+margin_top = 54.0
+margin_right = 148.0
+margin_bottom = 61.0
+mouse_filter = 2
+
+[node name="Blank5" type="Label" parent="P/MC/VBC/Stat5"]
+margin_right = 1.0
+margin_bottom = 7.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+autowrap = true
+
+[node name="Stat" type="Label" parent="P/MC/VBC/Stat5"]
+margin_left = 5.0
+margin_right = 77.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 72, 7 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+autowrap = true
+[connection signal="gui_input" from="." to="." method="_on_ToolTip_gui_input"]
+[connection signal="pressed" from="P/MC/VBC/VBoxContainer/TextureButton" to="." method="_on_TextureButton_pressed"]

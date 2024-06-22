@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Map/anvil.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 21.8678, 15.2249 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 17.7864, 11.7598 )
+
+[node name="Forge" type="Node2D"]
+scale = Vector2( 0.6, 0.6 )
+
+[node name="Texture" type="TextureRect" parent="."]
+margin_right = 35.0
+margin_bottom = 24.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AreaForge" type="Area2D" parent="Texture"]
+visible = false
+monitorable = false
+collision_layer = 2147483648
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Texture/AreaForge"]
+position = Vector2( 18.8882, 12.201 )
+shape = SubResource( 1 )
+
+[node name="CollisionArea" type="StaticBody2D" parent="Texture"]
+collision_mask = 18
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Texture/CollisionArea"]
+position = Vector2( 17.8419, 12.0763 )
+shape = SubResource( 2 )

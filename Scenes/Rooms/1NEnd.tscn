@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Assets/Map/Walls.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Map/Floor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Doors/Portal.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Doors/TopDoor.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Rooms/Door.gd" type="Script" id=5]
+[ext_resource path="res://Enemies/NatureBoss/NatureBoss.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Objects/LavaLamp.tscn" type="PackedScene" id=7]
+
+[node name="1NEnd" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Area2D" type="StaticBody2D" parent="."]
+collision_mask = 275
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PoolVector2Array( 5, 15.5, 143.501, 15.2291, 143.278, 0.0838699, -0.379402, 0.974766, 0.51149, 176.259, 320.344, 176.036, 319.676, 0.306595, 176.019, 0.306595, 176.464, 15.2291, 315.25, 15.5, 314.75, 171.75, 5, 172.25 )
+
+[node name="Floor" parent="." instance=ExtResource( 2 )]
+
+[node name="Walls" parent="." instance=ExtResource( 1 )]
+tile_data = PoolIntArray( 0, 1, 524290, 1, 1, 65538, 2, 1, 65538, 3, 1, 65538, 4, 1, 65538, 5, 1, 65538, 6, 1, 65538, 7, 1, 65538, 8, 1, 65537, 11, 1, 65537, 12, 1, 65538, 13, 1, 65538, 14, 1, 65538, 15, 1, 65538, 16, 1, 65538, 17, 1, 65538, 18, 1, 65538, 19, 1, 524291, 65536, 1, 524289, 65555, 1, 524288, 131072, 1, 524289, 131091, 1, 524288, 196608, 1, 524289, 196627, 1, 524288, 262144, 1, 524289, 262163, 1, 524288, 327680, 1, 524289, 327699, 1, 524288, 393216, 1, 524289, 393235, 1, 524288, 458752, 1, 524289, 458771, 1, 524288, 524288, 1, 524289, 524307, 1, 524288, 589824, 1, 524289, 589843, 1, 524288, 655360, 1, 524293, 655361, 1, 458755, 655362, 1, 458755, 655363, 1, 458755, 655364, 1, 458755, 655365, 1, 458755, 655366, 1, 458755, 655367, 1, 458755, 655368, 1, 458755, 655369, 1, 458755, 655370, 1, 458755, 655371, 1, 458755, 655372, 1, 458755, 655373, 1, 458755, 655374, 1, 458755, 655375, 1, 458755, 655376, 1, 458755, 655377, 1, 458754, 655378, 1, 458754, 655379, 1, 524292 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="TopDoor" parent="." instance=ExtResource( 4 )]
+
+[node name="Portal" parent="." instance=ExtResource( 3 )]
+position = Vector2( 25.25, 85.75 )
+
+[node name="Light2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 104, 8 )
+
+[node name="Light2D2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 216, 8 )
+
+[node name="NatureBoss" parent="." instance=ExtResource( 6 )]
+position = Vector2( 208.122, 98.3849 )
+
+[editable path="TopDoor"]

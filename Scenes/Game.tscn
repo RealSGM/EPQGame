@@ -1,0 +1,96 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://Scenes/UI/Camera.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Objects/Shop.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Game.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Rooms/3WNE.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Rooms/2WE.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Rooms/1N.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Rooms/4SWNE.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Rooms/2WN.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Rooms/2NE.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Rooms/1W.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/Rooms/2SN.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/Rooms/3SWE.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/Rooms/1E.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scenes/Rooms/1S.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scenes/Rooms/2SE.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Scenes/Rooms/2SW.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scenes/Rooms/3SNE.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Scenes/Rooms/3SWN.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Scenes/Objects/Forge.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Scenes/Rooms/SpawnRoom.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Scenes/Rooms/Room.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Scenes/ItemDrop.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Scenes/Rooms/1EEnd.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Scenes/Rooms/1WEnd.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Scenes/Rooms/1SEnd.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Scenes/Rooms/1NEnd.tscn" type="PackedScene" id=28]
+
+[node name="Game" type="Node2D"]
+pause_mode = 1
+script = ExtResource( 3 )
+_1E = ExtResource( 14 )
+_1N = ExtResource( 7 )
+_1S = ExtResource( 15 )
+_1W = ExtResource( 11 )
+_1EEnd = ExtResource( 25 )
+_1NEnd = ExtResource( 28 )
+_1SEnd = ExtResource( 27 )
+_1WEnd = ExtResource( 26 )
+_2NE = ExtResource( 10 )
+_2SE = ExtResource( 16 )
+_2SN = ExtResource( 12 )
+_2SW = ExtResource( 17 )
+_2WE = ExtResource( 6 )
+_2WN = ExtResource( 9 )
+_3SNE = ExtResource( 18 )
+_3SWE = ExtResource( 13 )
+_3SWN = ExtResource( 19 )
+_3WNE = ExtResource( 5 )
+_4SWNE = ExtResource( 8 )
+Spawn = ExtResource( 21 )
+itemDrop = ExtResource( 23 )
+room = ExtResource( 22 )
+
+[node name="Camera2D" parent="." instance=ExtResource( 1 )]
+visible = false
+
+[node name="MapNode" type="Node2D" parent="."]
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Player" parent="YSort" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 53.32, 115.833 )
+z_index = 1
+
+[node name="Shop" parent="." instance=ExtResource( 2 )]
+position = Vector2( 12.193, 5.46582 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.454902, 0.262745, 0.262745, 1 )
+
+[node name="Forge" parent="." instance=ExtResource( 20 )]
+position = Vector2( 89.1961, 24.0688 )
+
+[node name="TempBlack" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="TempBlack"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -39.0
+margin_top = -7.49604
+margin_right = 296.0
+margin_bottom = 149.504
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

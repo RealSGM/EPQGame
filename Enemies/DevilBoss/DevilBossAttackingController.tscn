@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Enemies/DevilBoss/DevilBossAttackingController.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/DevilHorns/DevilHorn.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemies/Devil Bone/DevilBone.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Player/MagicSpell.tscn" type="PackedScene" id=4]
+
+[node name="AttackingController" type="Node2D"]
+script = ExtResource( 1 )
+magicFire = ExtResource( 4 )
+devilHornSpawn = ExtResource( 2 )
+devilBoneSpawn = ExtResource( 3 )
+
+[node name="SpawningTimer" type="Timer" parent="."]
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]

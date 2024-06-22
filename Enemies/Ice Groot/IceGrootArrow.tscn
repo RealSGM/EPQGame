@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Enemies/Devil Bone/DevilBoneArrow.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Map/light.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 2.26772
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.44186, 0.72093, 0.945736, 1 )
+colors = PoolColorArray( 0, 0.280176, 0.411621, 1, 0, 0.679002, 0.997559, 1, 0.0248222, 0.24822, 0.353027, 1, 0.515625, 0.845322, 1, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.953947, 0.4125 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+lifetime_randomness = 0.8
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 3.0
+scale_random = 1.0
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 256
+collision_mask = 2147483652
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+rotation = 0.785398
+scale = Vector2( 0.6, 0.6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 3 )
+texture_scale = 0.1
+color = Color( 0, 0.835294, 1, 1 )
+energy = 0.3
+
+[node name="Particles2D" type="Particles2D" parent="."]
+show_behind_parent = true
+position = Vector2( 4.63015, 0.0350771 )
+rotation = 1.5708
+z_as_relative = false
+amount = 120
+preprocess = 0.1
+speed_scale = 3.0
+randomness = 1.0
+process_material = SubResource( 6 )
+
+[connection signal="area_entered" from="." to="." method="_on_Area2D_area_entered"]

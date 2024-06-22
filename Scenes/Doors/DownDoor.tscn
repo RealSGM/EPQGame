@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/TileSet/BottomDoor.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 18.542, 0.216171 )
+
+[node name="DownDoor" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 159.279, 175.797 )
+shape = SubResource( 1 )
+disabled = true
+one_way_collision = true
+one_way_collision_margin = 10.0
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 160, 169 )
+texture = ExtResource( 1 )
+hframes = 2
+frame = 1

@@ -1,0 +1,210 @@
+[gd_scene load_steps=37 format=2]
+
+[ext_resource path="res://Enemies/Stats.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Enemies/Player Detection/PlayerDetectionZone.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Player/Hurtbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemies/NatureBoss/NatureBossScript.gd" type="Script" id=4]
+[ext_resource path="res://Enemies/DamageStatesController.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemies/NatureBoss/NatureBossAttackingController.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Player/HitBox.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Enemies/NatureBoss/WanderNatureBoss.gd" type="Script" id=8]
+[ext_resource path="res://Enemies/NatureBoss/NatureBossDamageStatesController.gd" type="Script" id=9]
+[ext_resource path="res://Enemies/NatureBoss/NatureBossStats.gd" type="Script" id=11]
+[ext_resource path="res://Enemies/NatureBoss/NatureBossHitBox.gd" type="Script" id=12]
+[ext_resource path="res://Enemies/NatureBoss/NatureBossDeathEffect.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Assets/EnemyMove/NatureStomp.png" type="Texture" id=14]
+[ext_resource path="res://Assets/EnemyMove/NatureBoss.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Attacks/DamageEffects.png" type="Texture" id=23]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Start"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 100, 100, 100, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10.85, 14.9008 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 17 )
+region = Rect2( 0, 0, 32, 34 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 17 )
+region = Rect2( 32, 0, 32, 34 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 17 )
+region = Rect2( 64, 0, 32, 34 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 17 )
+region = Rect2( 96, 0, 32, 34 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 17 )
+region = Rect2( 128, 0, 32, 34 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 17 )
+region = Rect2( 160, 0, 32, 34 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 17 )
+region = Rect2( 192, 0, 32, 34 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 17 )
+region = Rect2( 224, 0, 32, 34 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 14 )
+region = Rect2( 0, 0, 32, 34 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 14 )
+region = Rect2( 32, 0, 32, 34 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 14 )
+region = Rect2( 64, 0, 32, 34 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 14 )
+region = Rect2( 96, 0, 32, 34 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 14 )
+region = Rect2( 128, 0, 32, 34 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 14 )
+region = Rect2( 160, 0, 32, 34 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 14 )
+region = Rect2( 192, 0, 32, 34 )
+
+[sub_resource type="SpriteFrames" id=18]
+resource_local_to_scene = true
+animations = [ {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"loop": true,
+"name": "default",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
+"loop": false,
+"name": "stomp",
+"speed": 10.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 6.98655, 11.9911 )
+
+[sub_resource type="CircleShape2D" id=20]
+radius = 161.181
+
+[sub_resource type="RectangleShape2D" id=21]
+extents = Vector2( 9.2681, 10.1785 )
+
+[node name="NatureBoss" type="KinematicBody2D"]
+pause_mode = 1
+position = Vector2( 157.898, 86.3182 )
+scale = Vector2( 2, 2 )
+collision_layer = 16400
+collision_mask = 19
+script = ExtResource( 4 )
+EnemyDeathEffect = ExtResource( 13 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Start = SubResource( 1 )
+
+[node name="Hurtbox" parent="." instance=ExtResource( 3 )]
+position = Vector2( -23.231, -1.56944 )
+collision_layer = 24
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2( 23.2229, -1.26353 )
+shape = SubResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0.20927, -6.49394 )
+frames = SubResource( 18 )
+frame = 7
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.707909, -1.56944 )
+shape = SubResource( 19 )
+
+[node name="Stats" parent="." instance=ExtResource( 1 )]
+script = ExtResource( 11 )
+
+[node name="PlayerDetectionZone" parent="." instance=ExtResource( 2 )]
+
+[node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
+modulate = Color( 1, 0, 0, 0.364706 )
+self_modulate = Color( 1, 0, 0, 0.643137 )
+position = Vector2( 1.82555, 0.72781 )
+shape = SubResource( 20 )
+
+[node name="HitBox" parent="." instance=ExtResource( 7 )]
+position = Vector2( 0.707909, -1.76977 )
+collision_mask = 4
+script = ExtResource( 12 )
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2( -0.366962, 0.854567 )
+shape = SubResource( 21 )
+
+[node name="DamageStates" type="Sprite" parent="."]
+position = Vector2( 0.383642, -21.682 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 23 )
+hframes = 6
+frame = 3
+
+[node name="DamageStatesController" parent="." instance=ExtResource( 5 )]
+script = ExtResource( 9 )
+
+[node name="WandereController" type="Node2D" parent="."]
+position = Vector2( 0.0172119, 0.250282 )
+script = ExtResource( 8 )
+
+[node name="Timer" type="Timer" parent="WandereController"]
+one_shot = true
+autostart = true
+
+[node name="AttackingController" parent="." instance=ExtResource( 6 )]
+
+[node name="MiniTimer" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="Tween" type="Tween" parent="."]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+[connection signal="animation_finished" from="AnimatedSprite" to="AttackingController" method="_on_AnimatedSprite_animation_finished"]
+[connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
+[connection signal="DamageTaken" from="DamageStatesController" to="." method="_on_DamageStatesController_DamageTaken"]
+[connection signal="DurationStop" from="DamageStatesController" to="." method="_on_DamageStatesController_DurationStop"]
+[connection signal="timeout" from="WandereController/Timer" to="WandereController" method="_on_Timer_timeout"]
+[connection signal="timeout" from="MiniTimer" to="." method="_on_MiniTimer_timeout"]
+
+[editable path="Hurtbox"]
+
+[editable path="PlayerDetectionZone"]
+
+[editable path="HitBox"]
+
+[editable path="DamageStatesController"]

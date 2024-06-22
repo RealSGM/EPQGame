@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="ParticlesMaterial" id=1]
+emission_shape = 1
+emission_sphere_radius = 15.0
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 0.0
+gravity = Vector3( 0, 98, 0 )
+orbit_velocity = 1.0
+orbit_velocity_random = 0.0
+scale = 0.1
+scale_random = 1.0
+
+[node name="Orbital" type="Particles2D"]
+position = Vector2( 6.37466, 1.68464 )
+rotation = 3.14159
+amount = 30
+speed_scale = 0.5
+process_material = SubResource( 1 )

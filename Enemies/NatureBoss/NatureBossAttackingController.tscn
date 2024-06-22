@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Enemies/NatureBoss/NatureBossAttackingController.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/Groot/Groot.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemies/NatureBoss/StompAttack.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemies/NatureBoss/NatureSpell.tscn" type="PackedScene" id=4]
+
+[node name="AttackingController" type="Node2D"]
+script = ExtResource( 1 )
+natureBlast = ExtResource( 4 )
+natureChild = ExtResource( 2 )
+stompAttack = ExtResource( 3 )
+
+[node name="SpawningTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="StompTimer" type="Timer" parent="."]
+wait_time = 5.0
+[connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
+[connection signal="timeout" from="StompTimer" to="." method="_on_StompTimer_timeout"]

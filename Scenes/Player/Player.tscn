@@ -1,0 +1,260 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://Assets/Character/playerSprite.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Player/WeaponController.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Attacks/DamageEffects.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Player/Hurtbox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Shader/WhiteShader.tres" type="Material" id=6]
+[ext_resource path="res://Scripts/Player/PickupArea.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/Player/PlayerDamageStatesController.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Player/Bow.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/SFX/Hit.wav" type="AudioStream" id=10]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 2.92559
+height = 9.06169
+
+[sub_resource type="Animation" id=2]
+resource_name = "Attack"
+
+[sub_resource type="Animation" id=3]
+length = 0.6
+loop = true
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.75
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 14, 15, 16, 17, 18 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.8
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 7, 8, 9, 10 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 7.75237
+height = 3.41031
+
+[sub_resource type="Animation" id=7]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:material:shader_param/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ true, false, false ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:material:shader_param/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 8.04621, 9.43603 )
+
+[sub_resource type="Gradient" id=10]
+offsets = PoolRealArray( 0, 0.356589, 0.596899 )
+colors = PoolColorArray( 0, 0, 0, 1, 1, 0.557068, 0.0390625, 1, 0.757813, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=11]
+gradient = SubResource( 10 )
+
+[sub_resource type="Curve" id=12]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.6 ), -2.68235, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=13]
+curve = SubResource( 12 )
+
+[sub_resource type="ParticlesMaterial" id=14]
+emission_shape = 2
+emission_box_extents = Vector3( 6, 6, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, -20, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_random = 1.0
+scale_curve = SubResource( 13 )
+color_ramp = SubResource( 11 )
+
+[sub_resource type="Curve" id=15]
+_data = [ Vector2( 0, 0.727273 ), 0.0, 0.0, 0, 0, Vector2( 0.947369, 0.590909 ), -2.81298, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=16]
+curve = SubResource( 15 )
+
+[sub_resource type="ParticlesMaterial" id=17]
+emission_shape = 2
+emission_box_extents = Vector3( 5, 5, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_random = 1.0
+scale_curve = SubResource( 16 )
+color = Color( 1, 0, 0, 1 )
+
+[node name="Player" type="KinematicBody2D"]
+pause_mode = 1
+use_parent_material = true
+position = Vector2( -0.294861, -5.91567 )
+collision_layer = 2147483650
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_vertical_guides_": [  ]
+}
+arrowScene = ExtResource( 9 )
+
+[node name="DamageStates" type="Sprite" parent="."]
+position = Vector2( 1.59799, -11.2603 )
+scale = Vector2( 0.263714, 0.263714 )
+texture = ExtResource( 4 )
+hframes = 6
+frame = 3
+
+[node name="Sprite" type="Sprite" parent="."]
+material = ExtResource( 6 )
+position = Vector2( 2.1875, 2.0625 )
+texture = ExtResource( 1 )
+hframes = 7
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0.968329, 7.15989 )
+rotation = 1.5708
+scale = Vector2( 1.61393, 0.851221 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Attack = SubResource( 2 )
+anims/IdleRight = SubResource( 3 )
+anims/RollRight = SubResource( 4 )
+anims/RunRight = SubResource( 5 )
+
+[node name="Hurtbox" parent="." instance=ExtResource( 5 )]
+visible = false
+collision_layer = 4
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+visible = false
+position = Vector2( 1.33081, 4.08449 )
+shape = SubResource( 6 )
+
+[node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Start = SubResource( 7 )
+anims/Stop = SubResource( 8 )
+
+[node name="PickupArea" type="Area2D" parent="."]
+visible = false
+position = Vector2( -0.705139, -1.11744 )
+scale = Vector2( 1.0587, 1.06817 )
+collision_layer = 0
+collision_mask = 128
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+visible = false
+position = Vector2( 2.33222, 4.07868 )
+shape = SubResource( 9 )
+
+[node name="WeaponController" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0.397751, 4.06586 )
+
+[node name="DamageStatesController" parent="." instance=ExtResource( 8 )]
+
+[node name="FireEffect" type="Particles2D" parent="."]
+position = Vector2( 1.14905, -0.530329 )
+emitting = false
+amount = 50
+process_material = SubResource( 14 )
+
+[node name="BloodEffect" type="Particles2D" parent="."]
+position = Vector2( 0.928078, 2.47487 )
+emitting = false
+amount = 3
+lifetime = 0.4
+randomness = 1.0
+process_material = SubResource( 17 )
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -10.0
+
+[connection signal="arrow_sent" from="." to="WeaponController" method="_on_Player_arrow_sent"]
+[connection signal="consume" from="." to="WeaponController" method="_on_Player_consume"]
+[connection signal="melee_attack" from="." to="WeaponController" method="_on_Player_melee_attack"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+[connection signal="body_entered" from="PickupArea" to="PickupArea" method="_on_PickupArea_body_entered"]
+[connection signal="body_exited" from="PickupArea" to="PickupArea" method="_on_PickupArea_body_exited"]
+[connection signal="DamageTaken" from="DamageStatesController" to="." method="_on_DamageStatesController_DamageTaken"]
+[connection signal="DurationStop" from="DamageStatesController" to="." method="_on_DamageStatesController_DurationStop"]
+
+[editable path="Hurtbox"]

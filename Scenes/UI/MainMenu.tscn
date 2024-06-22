@@ -1,0 +1,122 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Fonts/BornDynamic.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scripts/UI/MainMenu.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://GUI/Buttons/StartGame/StartGameButton2.png" type="Texture" id=4]
+[ext_resource path="res://GUI/Buttons/StartGame/StartGameButton3.png" type="Texture" id=5]
+[ext_resource path="res://GUI/Buttons/StartGame/StartGameButton1.png" type="Texture" id=6]
+[ext_resource path="res://GUI/Buttons/ExitMM/ExitButton1.png" type="Texture" id=7]
+[ext_resource path="res://GUI/Buttons/ExitMM/ExitButton2.png" type="Texture" id=8]
+[ext_resource path="res://GUI/Buttons/ExitMM/ExitButton3.png" type="Texture" id=12]
+[ext_resource path="res://Scenes/UI/Options.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/Lobby.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scenes/UI/SceneChanger.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scenes/UI/Menu.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Scenes/UI/UI.tscn" type="PackedScene" id=17]
+[ext_resource path="res://GUI/Panels/mainmenupanel.png" type="Texture" id=18]
+[ext_resource path="res://Assets/TileSet/background.png" type="Texture" id=19]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 19 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="MainMenu" type="ColorRect"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 1.52588e-05
+color = Color( 0.215686, 0, 0.501961, 0 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+optionsMenu = ExtResource( 13 )
+lobby = ExtResource( 14 )
+ui = ExtResource( 17 )
+menu = ExtResource( 16 )
+player = ExtResource( 3 )
+sceneChanger = ExtResource( 15 )
+
+[node name="CC" type="CenterContainer" parent="."]
+margin_right = 320.0
+margin_bottom = 176.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VB" type="VBoxContainer" parent="CC"]
+margin_left = 75.0
+margin_top = 47.0
+margin_right = 245.0
+margin_bottom = 128.0
+
+[node name="TitleCC" type="CenterContainer" parent="CC/VB"]
+margin_right = 170.0
+margin_bottom = 16.0
+
+[node name="Title" type="Label" parent="CC/VB/TitleCC"]
+margin_right = 170.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 1 )
+text = "The Tale of Jeremy Johnson"
+align = 1
+
+[node name="ButtonsCC" type="CenterContainer" parent="CC/VB"]
+margin_top = 20.0
+margin_right = 170.0
+margin_bottom = 81.0
+
+[node name="BG" type="TextureRect" parent="CC/VB/ButtonsCC"]
+margin_left = 55.0
+margin_right = 114.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 59, 61 )
+texture = ExtResource( 18 )
+
+[node name="MarginContainer" type="MarginContainer" parent="CC/VB/ButtonsCC/BG"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 38.0
+margin_bottom = 38.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VB" type="VBoxContainer" parent="CC/VB/ButtonsCC/BG/MarginContainer"]
+margin_right = 51.0
+margin_bottom = 34.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartGameButton" type="TextureButton" parent="CC/VB/ButtonsCC/BG/MarginContainer/VB"]
+margin_right = 51.0
+margin_bottom = 15.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitButton" type="TextureButton" parent="CC/VB/ButtonsCC/BG/MarginContainer/VB"]
+margin_top = 19.0
+margin_right = 51.0
+margin_bottom = 34.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 12 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 160, 88 )
+z_index = -1
+frames = SubResource( 1 )
+
+[connection signal="pressed" from="CC/VB/ButtonsCC/BG/MarginContainer/VB/StartGameButton" to="." method="_on_StartGameButton_pressed"]
+[connection signal="pressed" from="CC/VB/ButtonsCC/BG/MarginContainer/VB/ExitButton" to="." method="_on_ExitButton_pressed"]

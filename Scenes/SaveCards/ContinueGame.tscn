@@ -1,0 +1,161 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://GUI/Buttons/PlayButton/PlayButton2.png" type="Texture" id=1]
+[ext_resource path="res://GUI/Buttons/PlayButton/PlayButton3.png" type="Texture" id=2]
+[ext_resource path="res://GUI/Buttons/DeleteButton/DeleteButton3.png" type="Texture" id=3]
+[ext_resource path="res://GUI/Buttons/DeleteButton/DeleteButton1.png" type="Texture" id=4]
+[ext_resource path="res://GUI/Buttons/DeleteButton/DeleteButton2.png" type="Texture" id=5]
+[ext_resource path="res://GUI/Buttons/PlayButton/PlayButton1.png" type="Texture" id=6]
+[ext_resource path="res://Fonts/BornDynamic8.tres" type="DynamicFont" id=7]
+[ext_resource path="res://Fonts/BornDynamic6.tres" type="DynamicFont" id=8]
+[ext_resource path="res://Scripts/SaveCards/ContinueGame.gd" type="Script" id=9]
+[ext_resource path="res://GUI/Panels/savecardborder.png" type="Texture" id=10]
+
+[node name="ContinueGame" type="Control"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 69.0
+margin_bottom = 94.0
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Border" type="TextureRect" parent="."]
+margin_left = -2.0
+margin_top = -2.0
+margin_right = 69.0
+margin_bottom = 94.0
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MC" type="MarginContainer" parent="."]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 65.0
+margin_bottom = 50.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VB" type="VBoxContainer" parent="MC"]
+margin_right = 63.0
+margin_bottom = 48.0
+
+[node name="Balance" type="Label" parent="MC/VB"]
+margin_right = 63.0
+margin_bottom = 7.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.243137, 0.196078, 0.141176, 1 )
+text = "Coin Balance: "
+autowrap = true
+
+[node name="AttributesUnlocked" type="Label" parent="MC/VB"]
+margin_top = 11.0
+margin_right = 63.0
+margin_bottom = 18.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.243137, 0.196078, 0.141176, 1 )
+text = "Attributes Unlocked: "
+autowrap = true
+
+[node name="TimePlayed" type="Label" parent="MC/VB"]
+margin_top = 22.0
+margin_right = 63.0
+margin_bottom = 29.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.243137, 0.196078, 0.141176, 1 )
+text = "Time Played: "
+autowrap = true
+
+[node name="PlayControl" type="Control" parent="."]
+margin_left = 1.0
+margin_top = 51.0
+margin_right = 66.0
+margin_bottom = 70.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="TextureButton" parent="PlayControl"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 1.0
+margin_top = -9.5
+margin_right = 20.0
+margin_bottom = 9.5
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayLabel" type="Label" parent="PlayControl"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 29.0
+margin_top = -9.5
+margin_right = 61.0
+margin_bottom = 9.5
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.243137, 0.196078, 0.141176, 1 )
+text = "Continue 
+Game"
+align = 2
+
+[node name="DeleteSave" type="TextureButton" parent="."]
+margin_left = 2.0
+margin_top = 74.0
+margin_right = 65.0
+margin_bottom = 90.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadControl" type="Control" parent="."]
+margin_left = 1.0
+margin_top = 51.0
+margin_right = 66.0
+margin_bottom = 70.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Load" type="TextureButton" parent="LoadControl"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 1.0
+margin_top = -9.5
+margin_right = 20.0
+margin_bottom = 9.5
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadLabel" type="Label" parent="LoadControl"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 29.0
+margin_top = -9.5
+margin_right = 61.0
+margin_bottom = 9.5
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.243137, 0.196078, 0.141176, 1 )
+text = "Load 
+Save"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="PlayControl/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="DeleteSave" to="." method="_on_DeleteSave_pressed"]
+[connection signal="pressed" from="LoadControl/Load" to="." method="_on_Load_pressed"]

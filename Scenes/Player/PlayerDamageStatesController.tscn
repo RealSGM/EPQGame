@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/Player/PlayerDamageStatesControllerSkelly.gd" type="Script" id=1]
+
+
+[node name="DamageStatesController" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="DurationState" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="TimerDamageStates" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="DurationState" to="." method="_on_DurationState_timeout"]
+[connection signal="timeout" from="TimerDamageStates" to="." method="_on_TimerDamageStates_timeout"]

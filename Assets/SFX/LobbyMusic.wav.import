@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/LobbyMusic.wav-44856dab4071a28a5870f091000c9821.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/LobbyMusic.wav"
+dest_files=[ "res://.import/LobbyMusic.wav-44856dab4071a28a5870f091000c9821.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

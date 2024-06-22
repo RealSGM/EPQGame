@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+export(int) var wander_range = 50
+
+onready var start_position = global_position
+onready var target_position = global_position
+
+onready var timer = $Timer
+
+
+
+func update_target_positon():
+	start_position = global_position
+	var target_vector = Vector2(rand_range(-wander_range,wander_range),rand_range(-wander_range,wander_range))
+	target_position = start_position + target_vector
+
+func get_time_left():
+	return timer.time_left
+
+func start_wander_timer(duration):
+	timer.start(duration)
+
+func _on_Timer_timeout():
+	update_target_positon()
+"
+
+[node name="WandereCentaur" type="Node2D"]
+position = Vector2( 0.0172119, 0.250282 )
+script = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

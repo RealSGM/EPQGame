@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/TileSet/LeftDoorOpening.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 9.319, 0.444805 )
+
+[node name="LeftDoor" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.209991, 87.6931 )
+rotation = 1.5708
+shape = SubResource( 1 )
+disabled = true
+one_way_collision = true
+one_way_collision_margin = 10.0
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -3, 89 )
+texture = ExtResource( 1 )
+hframes = 2
+frame = 1
